@@ -14,25 +14,83 @@ class App extends React.Component {
 
   }
 
+  /**
+   * 
+   * var url = "https://en.wikipedia.org/w/api.php"; 
+
+var params = {
+    action: "query",
+    prop: "images",
+    titles: "Albert Einstein",
+    format: "json"
+};
+
+url = url + "?origin=*";
+Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+fetch(url)
+    .then(function(response){return response.json();})
+    .then(function(response) {
+        var pages = response.query.pages;
+        for (var page in pages) {
+            for (var img of pages[page].images) {
+                console.log(img.title);
+            }
+        }
+    })
+    .catch(function(error){console.log(error);});
+   * 
+   * 
+   * 
+   * 
+   */
+
  
 
-  componentDidMount() {
-    //fetch('http://jsonplaceholder.typicode.com/posts')
-    fetch(
-      "https://en.wikipedia.org/w/api.php?action=query&titles=San_Francisco&prop=images&imlimit=20&origin=*&format=json&formatversion=2",
-      {
-        method: "GET"
-      }
-    )
-        .then(response => response.json())
-        /* .then(json => console.log(json)) */
+//   componentDidMount() {
+//     //fetch('http://jsonplaceholder.typicode.com/posts')
+//     fetch(
+//       "https://en.wikipedia.org/w/api.php?action=query&titles=San_Francisco&prop=images&imlimit=20&origin=*&format=json&formatversion=2",
+//       {
+//         method: "GET"
+//       }
+//     )
+//         .then(response => response.json())
+//         /* .then(json => console.log(json)) */
 
-        .then(data => this.setState({list: data}));
+//         .then(data => this.setState({list: data}));
 
        
 
 
-}
+// }
+componentDidMount() {
+var url = "https://en.wikipedia.org/w/api.php"; 
+
+var params = {
+    action: "query",
+    prop: "images",
+    titles: "Albert Einstein",
+    format: "json"
+};
+
+url = url + "?origin=*";
+Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+fetch(url)
+    .then(function(response){return response.json();})
+    .then(function(response) {
+        var pages = response.query.pages;
+        for (var page in pages) {
+            for (var img of pages[page].images) {
+                console.log(img.title);
+            }
+        }
+    })
+    .catch(function(error){console.log(error);});
+
+  }
+
   render() {
  
 
